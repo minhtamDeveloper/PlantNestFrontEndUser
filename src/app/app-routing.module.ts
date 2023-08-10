@@ -10,11 +10,13 @@ import { ContactComponent } from './component/contact/contact.component';
 import { PortfolioComponent } from './component/portfolio/portfolio.component';
 import { UsersComponent } from './component/users/user.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
   {path: 'register',component: RegisterComponent},
-  {path: 'user',component: UsersComponent, children:[
+  {path: 'login',component: LoginComponent},
+  {path: '',component: UsersComponent, children:[
     {path: '',component: HomeComponent},
     {path: 'home',component: HomeComponent},
     // {path: 'aboutus',component: AboutUsComponent},
@@ -23,7 +25,7 @@ const routes: Routes = [
     // {path: 'shopdetail',component: ShopdetailComponent},
     // {path: 'checkout',component: CheckoutComponent},
     // {path: 'portfolio',component: PortfolioComponent},
-    // {path: 'contact',component: ContactComponent},
+    {path: 'contact',component: ContactComponent},
   ]},
 
 ];

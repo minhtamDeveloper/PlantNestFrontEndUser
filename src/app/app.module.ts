@@ -14,12 +14,14 @@ import { ContactComponent } from './component/contact/contact.component';
 import { PortfolioComponent } from './component/portfolio/portfolio.component';
 import { UsersComponent } from './component/users/user.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
+    LoginComponent,
     UsersComponent,
     HomeComponent,
     AboutUsComponent,
@@ -36,7 +38,7 @@ import { RegisterComponent } from './register/register.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    
+
 
   ],
   providers: [],
