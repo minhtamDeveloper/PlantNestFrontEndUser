@@ -8,18 +8,27 @@ import { ShopdetailComponent } from './component/shopdetail/shopdetail.component
 import { CheckoutComponent } from './component/checkout/checkout.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { PortfolioComponent } from './component/portfolio/portfolio.component';
+import { UsersComponent } from './component/users/user.component';
+import { RegisterComponent } from './register/register.component';
+
 
 const routes: Routes = [
-  {path: '',component: HomeComponent},
-  {path: 'home',component: HomeComponent},
-  {path: 'aboutus',component: AboutUsComponent},
-  {path: 'cart',component: CartComponent},
-  {path: 'shop',component: ShopComponent},
-  {path: 'shopdetail',component: ShopdetailComponent},
-  {path: 'checkout',component: CheckoutComponent},
-  {path: 'portfolio',component: PortfolioComponent},
-  {path: 'contact',component: ContactComponent},
+  {path: 'register',component: RegisterComponent},
+  {path: 'user',component: UsersComponent, children:[
+    {path: '',component: HomeComponent},
+    {path: 'home',component: HomeComponent},
+    // {path: 'aboutus',component: AboutUsComponent},
+    // {path: 'cart',component: CartComponent},
+    // {path: 'shop',component: ShopComponent},
+    // {path: 'shopdetail',component: ShopdetailComponent},
+    // {path: 'checkout',component: CheckoutComponent},
+    // {path: 'portfolio',component: PortfolioComponent},
+    // {path: 'contact',component: ContactComponent},
+  ]},
+
 ];
+// {path: 'login', component: LoginComponnent},
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

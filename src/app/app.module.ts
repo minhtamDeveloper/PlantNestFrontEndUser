@@ -12,11 +12,15 @@ import { ShopComponent } from './component/shop/shop.component';
 import { CheckoutComponent } from './component/checkout/checkout.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { PortfolioComponent } from './component/portfolio/portfolio.component';
-import { LoginComponent } from './component/login/login.component';
+import { UsersComponent } from './component/users/user.component';
+import { RegisterComponent } from './register/register.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    RegisterComponent,
+    UsersComponent,
     HomeComponent,
     AboutUsComponent,
     CartComponent,
@@ -25,14 +29,15 @@ import { LoginComponent } from './component/login/login.component';
     CheckoutComponent,
     ContactComponent,
     PortfolioComponent,
-    LoginComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-   
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
