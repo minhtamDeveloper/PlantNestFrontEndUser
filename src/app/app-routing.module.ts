@@ -7,10 +7,10 @@ import { ShopComponent } from './component/shop/shop.component';
 import { ShopdetailComponent } from './component/shopdetail/shopdetail.component';
 import { CheckoutComponent } from './component/checkout/checkout.component';
 import { ContactComponent } from './component/contact/contact.component';
-import { PortfolioComponent } from './component/portfolio/portfolio.component';
 import { UsersComponent } from './component/users/user.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { MyprofileComponent } from './component/myprofile/myprofile.component';
 
 
 const routes: Routes = [
@@ -19,13 +19,13 @@ const routes: Routes = [
   {path: '',component: UsersComponent, children:[
     {path: '',component: HomeComponent},
     {path: 'home',component: HomeComponent},
-    // {path: 'aboutus',component: AboutUsComponent},
-    // {path: 'cart',component: CartComponent},
-    // {path: 'shop',component: ShopComponent},
-    // {path: 'shopdetail',component: ShopdetailComponent},
-    // {path: 'checkout',component: CheckoutComponent},
-    // {path: 'portfolio',component: PortfolioComponent},
+    {path: 'aboutus',component: AboutUsComponent},
+    {path: 'cart',component: CartComponent},
+    {path: 'shop',component: ShopComponent},
+    {path: 'shop/shopdetail',component: ShopdetailComponent},
+    {path: 'checkout',component: CheckoutComponent},
     {path: 'contact',component: ContactComponent},
+    {path: 'myprofile',component: MyprofileComponent},
   ]},
 
 ];

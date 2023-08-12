@@ -1,1 +1,108 @@
 
+  <!-- ##### Breadcrumb Area Start ##### -->
+  <div class="breadcrumb-area">
+    <!-- Top Breadcrumb Area -->
+    <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(assets/img/bg-img/24.jpg);">
+        <h2>Cart</h2>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a [routerLink]="['/']"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Breadcrumb Area End ##### -->
+
+<!-- ##### Cart Area Start ##### -->
+<div class="cart-area section-padding-0-100 clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="cart-table clearfix">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Products</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>TOTAL</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <!-- thực hiện vòng lặp ở đây -->
+                          <ng-container *ngIf="cartList != null">
+                            <tr *ngFor="let cart of cartList">
+                              <td class="cart_product_img">
+                                  <a ><img src="{{cart.imageUrl}}" alt="Product"></a>
+                                  <h5>{{cart.productName}}</h5>
+                              </td>
+                              <td class="qty">
+                                <div class="quantity">
+                                  <span class="qty-minus" (click)="decreaseQuantity(cart)" [hidden]="cart.quantity === 1"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                  <input type="number" class="qty-text" [id]="'qty' + cart.id" step="1" min="1" max="99" name="quantity" [(ngModel)]="cart.quantity">
+                                  <span class="qty-plus" (click)="increaseQuantity(cart)" [hidden]="cart.quantity === 99"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                </div>
+                              </td>
+                              <td class="price"><span>{{cart.price}} $</span></td>
+                              <td class="total_price"><span>{{ calculateTotalPrice(cart) }} $</span></td>
+                              <td (click)="updateCart(cart.id, cart.quantity)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" class="bi bi-pen" viewBox="0 0 16 16">
+                                  <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                                </svg>
+                                </td>
+                              <td class="action" (click)="deleteCart(cart.id)"><a ><i class="icon_close"></i></a></td>
+                          </tr>
+                          </ng-container>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <!-- Coupon Discount -->
+            <div class="col-12 col-lg-6">
+                <div class="coupon-discount mt-70">
+                    <h5>COUPON DISCOUNT</h5>
+                    <p>You can use the coupon during checkout by adding a qualified item from the seller's booth to your cart. Then, click the "Apply code" button to see the savings reflected in your updated order total.</p>
+                    <form action="#" method="post">
+                        <input type="text" name="coupon-code" placeholder="Enter your coupon code">
+                        <button type="submit">APPLY COUPON</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Cart Totals -->
+            <div class="col-12 col-lg-6">
+                <div class="cart-totals-area mt-70">
+                    <h5 class="title--">Cart Total</h5>
+                    <div class="subtotal d-flex justify-content-between">
+                      <h5>Amount</h5>
+                      <h5>{{ totalItems }}</h5>
+                  </div>
+
+                    <div class="total d-flex justify-content-between">
+                        <h5>Total</h5>
+                        <h5>{{ grandTotal }} $</h5>
+                    </div>
+                    <div class="checkout-btn">
+                        <a [routerLink]="['/checkout']" class="btn alazea-btn w-100">PROCEED TO CHECKOUT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- ##### Cart Area End ##### -->

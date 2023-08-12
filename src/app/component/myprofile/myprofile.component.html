@@ -2,7 +2,7 @@
 <div class="breadcrumb-area">
   <!-- Top Breadcrumb Area -->
   <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(assets/img/bg-img/24.jpg);">
-      <h2>Checkout</h2>
+      <h2>My Profile</h2>
   </div>
 
   <div class="container">
@@ -11,7 +11,7 @@
               <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                       <li class="breadcrumb-item"><a [routerLink]="['/']"><i class="fa fa-home"></i> Home</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                      <li class="breadcrumb-item active" aria-current="page">My Profile</li>
                   </ol>
               </nav>
           </div>
@@ -24,9 +24,9 @@
 <div class="checkout_area mb-100">
   <div class="container">
       <div class="row justify-content-between" >
-          <div class="col-12 col-lg-7" >
+          <div class="col-12 col-lg-6" >
               <div class="checkout_details_area clearfix">
-                  <h5>Billing Details</h5>
+                  <h5>MY ACCOUNT INFO</h5>
                   <form >
                       <div class="row">
 
@@ -65,7 +65,7 @@
               </div>
           </div>
 
-          <div class="col-12 col-lg-4">
+          <div class="col-12 col-lg-5">
               <div class="checkout-content">
                   <h5 class="title--">Your Order</h5>
                   <div class="products">
@@ -91,7 +91,7 @@
                       <h5>$12.99</h5>
                   </div>
                   <div class="checkout-btn mt-30">
-                      <a href="#" class="btn alazea-btn w-100">Place Order</a>
+                      <a [routerLink]="['/orderhistory']" class="btn alazea-btn w-100">Order History</a>
                   </div>
               </div>
           </div>

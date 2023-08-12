@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,11 +10,16 @@ import { ShopdetailComponent } from './component/shopdetail/shopdetail.component
 import { ShopComponent } from './component/shop/shop.component';
 import { CheckoutComponent } from './component/checkout/checkout.component';
 import { ContactComponent } from './component/contact/contact.component';
-import { PortfolioComponent } from './component/portfolio/portfolio.component';
 import { UsersComponent } from './component/users/user.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-
+import { MyprofileComponent } from './component/myprofile/myprofile.component';
+import { BaseURLService } from './service/baseurl.service';
+import { ProductService } from './service/product.service';
+import { HttpClientModule } from '@angular/common/http';
+import { CategoryService } from './service/category.service';
+import { CartService } from './service/cart.service';
+import { FavoriteCartService } from './service/favoritecart.service';
 
 @NgModule({
   declarations: [
@@ -30,18 +34,25 @@ import { LoginComponent } from './login/login.component';
     ShopComponent,
     CheckoutComponent,
     ContactComponent,
-    PortfolioComponent,
+    MyprofileComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    FormsModule, // Thêm FormsModule vào imports
     ReactiveFormsModule,
+    HttpClientModule
 
 
   ],
-  providers: [],
+  providers: [
+    BaseURLService,
+    ProductService,
+    CategoryService,
+    CartService,
+    FavoriteCartService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
