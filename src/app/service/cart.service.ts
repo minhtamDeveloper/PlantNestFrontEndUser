@@ -30,4 +30,9 @@ async update(cart: Cart){
 async delete(cartId: string){
   return await lastValueFrom(this.httpClient.delete(this.baseURLService.getBaseUrl()+'cart/deleteCart/'+cartId));
 }
+
+async deleteByAccountId(accountId: number){
+  return await lastValueFrom(this.httpClient.delete(this.baseURLService.getBaseUrl()+'cart/deleteCartByAccountId/'+accountId));
+}
+
 }

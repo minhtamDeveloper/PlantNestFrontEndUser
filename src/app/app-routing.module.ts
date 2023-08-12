@@ -11,6 +11,8 @@ import { UsersComponent } from './component/users/user.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { MyprofileComponent } from './component/myprofile/myprofile.component';
+import { DeliveryComponent } from './component/delivery/delivery.compoent';
+import { FavoriteComponent } from './component/favoritecart/favoritecart.component';
 
 
 const routes: Routes = [
@@ -26,6 +28,8 @@ const routes: Routes = [
     {path: 'checkout',component: CheckoutComponent},
     {path: 'contact',component: ContactComponent},
     {path: 'myprofile',component: MyprofileComponent},
+    {path: 'myorder',component: DeliveryComponent},
+    {path: 'listfavorite',component: FavoriteComponent},
   ]},
 
 ];

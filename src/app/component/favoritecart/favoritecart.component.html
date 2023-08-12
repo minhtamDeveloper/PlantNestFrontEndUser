@@ -1,0 +1,87 @@
+ <!-- ##### Breadcrumb Area Start ##### -->
+ <div class="breadcrumb-area">
+  <!-- Top Breadcrumb Area -->
+  <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(assets/img/bg-img/24.jpg);">
+      <h2>  MY ORDER</h2>
+  </div>
+
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a [routerLink]="['/']"><i class="fa fa-home"></i> Home</a></li>
+                      <li class="breadcrumb-item"><a>My Order</a></li>
+                  </ol>
+              </nav>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- ##### Breadcrumb Area End ##### -->
+
+<!-- ##### Single Product Details Area Start ##### -->
+<section class="single_product_details_area mb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="product_details_tab clearfix">
+                    <!-- Tabs -->
+                    <ul class="nav nav-tabs" role="tablist" id="product-details-tab">
+                        <li class="nav-item">
+                            <a href="#description" class="nav-link active" data-toggle="tab" role="tab">My Favorites List</a>
+                        </li>
+
+
+                    </ul>
+                    <!-- Tab Content -->
+                    <div class="tab-content">
+                      <!-- thực hiện vòng lặp ở đây -->
+                      <div role="tabpanel" class="tab-pane fade show active" id="description">
+                          <div class="description_area">
+                              <table class="table table-bordered" >
+
+                                  <thead>
+                                      <tr>
+                                        <th></th>
+                                        <th>Code</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th></th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    <ng-container *ngIf="favoriteCart != null">
+                                      <tr  *ngFor="let fa of favoriteCart">
+                                        <td>
+                                          <a [routerLink]="['/shop/shopdetail',{product:fa.productId}]">
+                                            <button style="color:#fff;background-color: blue;border: none;padding: 10px;">Buy Now</button>
+                                          </a>
+                                        </td>
+
+                                        <td>{{fa.productId}}
+                                          </td>
+                                        <td>{{fa.productName}}</td>
+                                        <td> {{fa.price}}
+                                        </td>
+                                        <td>
+                                          <img src="{{fa.imageUrl}}" alt="" style="width: 70px;height: auto;">
+                                        </td>
+                                      </tr>
+
+                                    </ng-container>
+                                  </tbody>
+                                 </table>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+<!-- ##### Single Product Details Area End ##### -->
+
+

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +20,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { CategoryService } from './service/category.service';
 import { CartService } from './service/cart.service';
 import { FavoriteCartService } from './service/favoritecart.service';
-
+import { NgxPayPalModule } from 'ngx-paypal';
+import { DatePipe } from '@angular/common';
+import { OrdersService } from './service/order.service';
+import { OrderDetailService } from './service/orderdetail.service';
+import { DeliveryService } from './service/delivery.service';
+import { DeliveryComponent } from './component/delivery/delivery.compoent';
+import { FavoriteComponent } from './component/favoritecart/favoritecart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +40,9 @@ import { FavoriteCartService } from './service/favoritecart.service';
     ShopComponent,
     CheckoutComponent,
     ContactComponent,
-    MyprofileComponent
+    MyprofileComponent,
+    DeliveryComponent,
+    FavoriteComponent
 
   ],
   imports: [
@@ -42,8 +50,8 @@ import { FavoriteCartService } from './service/favoritecart.service';
     AppRoutingModule,
     FormsModule, // Thêm FormsModule vào imports
     ReactiveFormsModule,
-    HttpClientModule
-
+    HttpClientModule,
+    NgxPayPalModule
 
   ],
   providers: [
@@ -51,8 +59,15 @@ import { FavoriteCartService } from './service/favoritecart.service';
     ProductService,
     CategoryService,
     CartService,
-    FavoriteCartService
+    FavoriteCartService,
+    OrdersService,
+    OrderDetailService,
+    DeliveryService,
+    DatePipe
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }

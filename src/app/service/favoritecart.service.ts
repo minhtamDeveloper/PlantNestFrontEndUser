@@ -17,4 +17,7 @@ export class FavoriteCartService{
   return await lastValueFrom(this.httpClient.post(this.baseURLService.getBaseUrl()+ 'favoritecart/addFavoriteCart/', favoriteCart));
 }
 
+async findByAccountId(accId: number){
+  return await lastValueFrom(this.httpClient.get(this.baseURLService.getBaseUrl()+'favoritecart/findByAccountId/'+accId));
+}
 }

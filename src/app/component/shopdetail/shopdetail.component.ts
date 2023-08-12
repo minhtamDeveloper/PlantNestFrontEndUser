@@ -59,7 +59,7 @@ export class ShopdetailComponent {
     var sellPrice = sellPrice;
     console.log(id, quantity,sellPrice);
     const cartToAdd: Cart = { accountId: 4, productId: id, quantity:quantity, id: 0, productName: '', price: sellPrice, imageUrl: '' };
-    console.log(cartToAdd);
+    // console.log(cartToAdd);
     this.cartService.created(cartToAdd).then(
       result => {
         console.log(result);
@@ -71,6 +71,7 @@ export class ShopdetailComponent {
           showConfirmButton: false,
           timer: 1500
         })
+        this.router.navigate(['/cart']);
       },
       ).catch(err => {
         console.log(err);

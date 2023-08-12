@@ -30,12 +30,13 @@ export class CartComponent {
     this.cartService.findByAccountId('4').then(
       result => {
         this.cartList = result as Cart[];
+        this.loadCartItems();
       },
       err => {
         console.log(err);
       }
     )
-    this.loadCartItems();
+
   }
 
   loadData(){
@@ -51,8 +52,6 @@ export class CartComponent {
   }
 
   loadCartItems() {
-    // Load cart items from the service and populate cartList
-    // Also, calculate totalItems and grandTotal
     this.totalItems = this.cartList.reduce((sum, cart) => sum + cart.quantity, 0);
     this.grandTotal = this.cartList.reduce((sum, cart) => sum + this.calculateTotalPrice(cart), 0);
   }
@@ -82,6 +81,7 @@ export class CartComponent {
             showConfirmButton: false,
             timer: 1500
           })
+          this.loadCartItems();
         },
         err => {
           console.log("Error while updating cart on server:", err);
@@ -116,10 +116,12 @@ export class CartComponent {
             showConfirmButton: false,
             timer: 1500
           })
+          this.loadCartItems();
           this.router.navigateByUrl('/cart', { skipLocationChange: true }).then(() => {
             this.router.navigate(['/cart']);
           });
           await this.loadData();
+     
         }
       } catch (err) {
         console.log(err);
