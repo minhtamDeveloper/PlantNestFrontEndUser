@@ -1,43 +1,151 @@
 <div class="main">
-        <!-- Sign up form -->
-        <section class="signup">
-            <div class="container_register_login">
-                <div class="signup-content">
-                    <div class="signup-form">
-                        <h2 class="form-title" style="font-family: Arial, Helvetica, sans-serif;">Register</h2>
-                        <form method="POST" class="register-form" id="register-form">
-                            <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="name" id="name" placeholder="Your Name"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Your Email"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Password"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="date" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
-                            </div>
-                            <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="signup-image">
-                        <figure><img src="assets/img/signup-image.jpg" alt="sing up image"></figure>
-                        <a [routerLink]="['/login']" class="signup-image-link">
-                          Sign In Now!</a>
-                    </div>
+    <!-- Sign up form -->
+    <section class="signup">
+        <div class="container_register_login">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <h2 class="form-title" style="font-family: Arial, Helvetica, sans-serif;">Register</h2>
+                    <form method="POST" [formGroup]="form" (ngSubmit)="save()" class="register-form" id="register-form">
+
+                        <div *ngIf="form.get('username').touched">
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('required',['username'])">Username
+                                shouldn't be empty</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('minlength',['username'])">Username
+                                shouldn't be under 3 char</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('maxlength',['username'])">Username
+                                shouldn't be over 250 char</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('pattern',['username'])">This is not a valid username format. (Only
+                                characters and numberic)</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="name" id="name" formControlName="username"
+                                placeholder="Your Username" />
+                        </div>
+
+
+                        <div *ngIf="form.get('email').touched">
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('required',['email'])">Email
+                                shouldn't be empty</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('minlength',['email'])">Email
+                                shouldn't be under 3 char</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('maxlength',['email'])">Email
+                                shouldn't be over 250 char</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('pattern',['email'])">This is not a valid email format.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-email"></i></label>
+                            <input type="email" name="email" id="email" formControlName="email"
+                                placeholder="Your Email" />
+                        </div>
+
+
+                        <div *ngIf="form.get('password').touched">
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('required',['password'])">Password
+                                shouldn't be empty</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('minlength',['password'])">Password
+                                shouldn't be under 6 char</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('maxlength',['password'])">Password
+                                shouldn't be over 250 char</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('pattern',['password'])">Minimum six characters, at least one
+                                uppercase letter, one lowercase letter and one number.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="pass" id="pass" formControlName="password"
+                                placeholder="Password" />
+                        </div>
+
+                        <div *ngIf="form.get('fullname').touched">
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('required',['fullname'])">Fullname
+                                shouldn't be empty</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('minlength',['fullname'])">Fullname
+                                shouldn't be under 3 char</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('maxlength',['fullname'])">Fullname
+                                shouldn't be over 250 char</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('pattern',['fullname'])">This is not a valid fullname
+                                format.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-accounts-list"></i></label>
+                            <input type="text" formControlName="fullname" placeholder="Your Fullname" />
+                        </div>
+
+                        <div *ngIf="form.get('phone').touched">
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('required',['phone'])">Phone
+                                shouldn't be empty</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('minlength',['phone'])">Phone
+                                shouldn't be under 8 char</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('maxlength',['phone'])">Phone
+                                shouldn't be over 250 char</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('pattern',['phone'])">This is not a valid phone format.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-whatsapp"></i></label>
+                            <input type="number" formControlName="phone" placeholder="Your Phone" />
+                        </div>
+
+                        <div *ngIf="form.get('address').touched">
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('required',['address'])">Address
+                                shouldn't be empty</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('minlength',['address'])">Address
+                                shouldn't be under 3 char</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('maxlength',['address'])">Address
+                                shouldn't be over 250 char</span>
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('pattern',['address'])">This is not a valid address format.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-pin"></i></label>
+                            <input type="text" formControlName="address" placeholder="Your Address" />
+                        </div>
+
+                        <div *ngIf="form.get('dob').touched">
+                            <span class="text-danger" style="font-size:12px"
+                                *ngIf="form.hasError('required',['dob'])">Date of birth
+                                shouldn't be empty</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-calendar"></i></label>
+                            <input type="date" formControlName="dob" placeholder="Your Date Of Birth" />
+                        </div>
+                        <div class="form-group form-button">
+                            <button type="submit" name="signup" id="signup" class="btn btn-primary"
+                                [disabled]="form.invalid">Register</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="signup-image">
+                    <figure><a href="/">
+                        <img src="assets/img/signup-image.jpg" alt="sing up image">
+                    </a> </figure>
+                    <a routerLink="/login" class="signup-image-link">
+                        Sign In Now!</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 </div>
-
